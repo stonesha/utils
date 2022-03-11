@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply m-auto mt-20 md:w-3/5 w-11/12 bg-slate-500;
+}
