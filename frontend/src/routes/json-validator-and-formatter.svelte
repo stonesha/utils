@@ -4,7 +4,7 @@
   let jsonString = ''
   let slug = $page.url.pathname.slice(1)
 
-  let valid;
+  let valid
   let showValidMessage = false
 
   const validateJson = () => {
