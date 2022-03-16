@@ -10,6 +10,14 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://localhost:8080",
+    "http://utils.stonesha.com:3000",
+    "http://utils.stonesha.com:8080",
+    "http://utils.stonesha.com",
+    "https://localhost:3000",
+    "https://localhost:8080",
+    "https://utils.stonesha.com:3000",
+    "https://utils.stonesha.com:8080",
+    "https://utils.stonesha.com",
 ]
 
 app.add_middleware(

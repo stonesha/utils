@@ -10,7 +10,7 @@
   const handleSubmit = async () => {
     let error = false;
     state = 'loading';
-    let response = await fetch("http://localhost:8000/extract_video/", {
+    let response = await fetch("https://utils.stonesha.com:8000/extract_video/", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
