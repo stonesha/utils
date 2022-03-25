@@ -6,3 +6,5 @@ package
 .env
 .env.*
 !.env.example
+/.svelte
+/.vercel_build_output
