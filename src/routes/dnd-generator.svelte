@@ -3,7 +3,12 @@
 
 	let slug = $page.url.pathname.slice(1)
   let dnd_race: string = ''
-  let dnd_class: string = ''
+  let dnd_class = {
+    main_class: '',
+    sub_class: '',
+    sub_sub_class: '',
+  }
+  let class_generated = false
   let dnd_stats = {
     strength: 0,
     strength_modifier: '',
@@ -85,113 +90,178 @@
           "Yuan-ti Pureblood (Volo)"
       ],
       classes: [
-          "Barbarian (PHB, SRD)",
-          "Path of the Berserker (PHB, SRD)",
-          "Path of the Totem Warrior (PHB)",
-          "Bear (PHB)",
-          "Eagle (PHB)",
-          "Wolf (PHB)",
-          "Elk (SCAG)",
-          "Tiger (SCAG)",
-          "Path of the Battlerager (SCAG)",
-          "Path of the Ancestral Guardian (XGtE)",
-          "Path of the Storm Herald (XGtE)",
-          "Desert (XGtE)",
-          "Sea (XGtE)",
-          "Tundra (XGtE)",
-          "Path of the Zealot (XGtE)",
-          "Bard (PHB, SRD)",
-          "College of Lore (PHB, SRD)",
-          "College of Valor (PHB)",
-          "College of Swords (XGtE)",
-          "College of Glamour (XGtE)",
-          "College of Whispers (XGtE)",
-          "College of Satire ()",
-          "Cleric (PBR, PHB, SRD)",
-          "Knowledge Domain (PHB)",
-          "Life Domain (PBR, PHB, SRD)",
-          "Light Domain (PHB)",
-          "Nature Domain (PHB)",
-          "Tempest Domain (PHB)",
-          "Trickery Domain (PHB)",
-          "War Domain (PHB)",
-          "Death Domain (DMG)",
-          "Arcana Domain (SCAG)",
-          "Forge Domain (XGtE)",
-          "Grave Domain (XGtE)",
-          "Druid (PHB, SRD)",
-          "Circle of the Land (PHB, SRD)",
-          "Circle of the Moon (PHB)",
-          "Circle of Dreams (XGtE)",
-          "Circle of the Shepherd (XGtE)",
-          "Fighter (PBR, PHB, SRD)",
-          "Champion (PBR, PHB, SRD)",
-          "Battle Master (PHB)",
-          "Eldritch Knight (PHB)",
-          "Purple Dragon Knight (Banneret) (SCAG)",
-          "Arcane Archer (XGtE)",
-          "Cavalier (XGtE)",
-          "Samurai (XGtE)",
-          "Monk (PHB, SRD)",
-          "Way of the Open Hand (PHB, SRD)",
-          "Way of Shadow (PHB)",
-          "Way of the Four Elements (PHB)",
-          "Way of the Long Death (SCAG)",
-          "Way of the Sun Soul (SCAG, XGtE)",
-          "Way of the Drunken Master (XGtE)",
-          "Way of the Kensei (XGtE)",
-          "Paladin (PHB, SRD)",
-          "Oath of Devotion (PHB, SRD)",
-          "Oath of the Ancients (PHB)",
-          "Oath of Vengeance (PHB)",
-          "Oathbreaker (DMG)",
-          "Oath of the Crown (SCAG)",
-          "Oath of Conquest (XGtE)",
-          "Oath of Redemption (XGtE)",
-          "Ranger (PHB, SRD)",
-          "Hunter (PHB, SRD)",
-          "Beast Master (PHB)",
-          "Gloom Stalker (XGtE)",
-          "Horizon Walker (XGtE)",
-          "Monster Slayer (XGtE)",
-          "Rogue (PBR, PHB, SRD)",
-          "Thief (PBR, PHB, SRD)",
-          "Assassin (PHB)",
-          "Arcane Trickster (PHB)",
-          "Swashbuckler (SCAG, XGtE)",
-          "Mastermind (SCAG, XGtE)",
-          "Inquisitive (XGtE)",
-          "Scout (XGtE)",
-          "Sorcerer (PHB, SRD)",
-          "Draconic Bloodline (PHB, SRD)",
-          "Wild Magic (PHB)",
-          "Storm Sorcery (SCAG, XGtE)",
-          "Divine Soul (XGtE)",
-          "Shadow Magic (XGtE)",
-          "Warlock (PHB, SRD)",
-          "Archfey (PHB)",
-          "Fiend (PHB, SRD)",
-          "Great Old One (PHB)",
-          "The Undying (SCAG)",
-          "The Celestial (XGtE)",
-          "The Hexblade (XGtE)",
-          "Wizard (PBR, PHB, SRD)",
-          "Abjuration (PHB)",
-          "Conjuration (PHB)",
-          "Divination (PHB)",
-          "Enchantment (PHB)",
-          "Evocation (PBR, PHB, SRD)",
-          "Illusion (PHB)",
-          "Necromancy (PHB)",
-          "Transmutation (PHB)",
-          "Bladesinging (SCAG)",
-          "War Magic (XGtE)"
+          {
+            main_class: "Barbarian (PHB, SRD)",
+            sub_classes: {
+              "Path of the Berserker (PHB, SRD)": [],
+              "Path of the Totem Warrior (PHB)": [
+                "Bear (PHB)",
+                "Eagle (PHB)",
+                "Wolf (PHB)",
+                "Elk (SCAG)",
+                "Tiger (SCAG)"
+              ],
+              "Path of the Battlerager (SCAG)": [],
+              "Path of the Ancestral Guardian (XGtE)": [],
+              "Path of the Storm Herald (XGtE)": [
+                "Desert (XGtE)",
+                "Sea (XGtE)",
+                "Tundra (XGtE)"
+              ],
+              "Path of the Zealot (XGtE)": []
+            }
+          },
+          {
+            main_class: "Bard (PHB, SRD)",
+            sub_classes: {
+              "College of Lore (PHB, SRD)": [],
+              "College of Valor (PHB)": [],
+              "College of Swords (XGtE)": [],
+              "College of Glamour (XGtE)": [],
+              "College of Whispers (XGtE)": [],
+              "College of Satire ()": [],
+            }
+          },
+          {
+            main_class: "Cleric (PBR, PHB, SRD)",
+            sub_classes: {
+              "Knowledge Domain (PHB)": [],
+              "Life Domain (PBR, PHB, SRD)": [],
+              "Light Domain (PHB)": [],
+              "Nature Domain (PHB)": [],
+              "Tempest Domain (PHB)": [],
+              "Trickery Domain (PHB)": [],
+              "War Domain (PHB)": [],
+              "Death Domain (DMG)": [],
+              "Arcana Domain (SCAG)": [],
+              "Forge Domain (XGtE)": [],
+              "Grave Domain (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Druid (PHB, SRD)",
+            sub_classes: {
+              "Circle of the Land (PHB, SRD)": [],
+              "Circle of the Moon (PHB)": [],
+              "Circle of Dreams (XGtE)": [],
+              "Circle of the Shepherd (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Fighter (PBR, PHB, SRD)",
+            sub_classes: {
+              "Champion (PBR, PHB, SRD)": [],
+              "Battle Master (PHB)": [],
+              "Eldritch Knight (PHB)": [],
+              "Purple Dragon Knight (Banneret) (SCAG)": [],
+              "Arcane Archer (XGtE)": [],
+              "Cavalier (XGtE)": [],
+              "Samurai (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Monk (PHB, SRD)",
+            sub_classes: {
+              "Way of the Open Hand (PHB, SRD)": [],
+              "Way of Shadow (PHB)": [],
+              "Way of the Four Elements (PHB)": [],
+              "Way of the Long Death (SCAG)": [],
+              "Way of the Sun Soul (SCAG, XGtE)": [],
+              "Way of the Drunken Master (XGtE)": [],
+              "Way of the Kensei (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Paladin (PHB, SRD)",
+            sub_classes: {
+              "Oath of Devotion (PHB, SRD)": [],
+              "Oath of the Ancients (PHB)": [],
+              "Oath of Vengeance (PHB)": [],
+              "Oathbreaker (DMG)": [],
+              "Oath of the Crown (SCAG)": [],
+              "Oath of Conquest (XGtE)": [],
+              "Oath of Redemption (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Ranger (PHB, SRD)",
+            sub_classes: {
+              "Hunter (PHB, SRD)": [],
+              "Beast Master (PHB)": [],
+              "Gloom Stalker (XGtE)": [],
+              "Horizon Walker (XGtE)": [],
+              "Monster Slayer (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Rogue (PBR, PHB, SRD)",
+            sub_classes: {
+              "Thief (PBR, PHB, SRD)": [],
+              "Assassin (PHB)": [],
+              "Arcane Trickster (PHB)": [],
+              "Swashbuckler (SCAG, XGtE)": [],
+              "Mastermind (SCAG, XGtE)": [],
+              "Inquisitive (XGtE)": [],
+              "Scout (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Sorcerer (PHB, SRD)",
+            sub_classes: {
+              "Draconic Bloodline (PHB, SRD)": [],
+              "Wild Magic (PHB)": [],
+              "Storm Sorcery (SCAG, XGtE)": [],
+              "Divine Soul (XGtE)": [],
+              "Shadow Magic (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Warlock (PHB, SRD)",
+            sub_classes: {
+              "Archfey (PHB)": [],
+              "Fiend (PHB, SRD)": [],
+              "Great Old One (PHB)": [],
+              "The Undying (SCAG)": [],
+              "The Celestial (XGtE)": [],
+              "The Hexblade (XGtE)": [],
+            }
+          },
+          {
+            main_class: "Wizard (PHB, SRD)",
+            sub_classes: {
+              "Abjuration (PHB)": [],
+              "Conjuration (PHB)": [],
+              "Divination (PHB)": [],
+              "Enchantment (PHB)": [],
+              "Evocation (PBR, PHB, SRD)": [],
+              "Illusion (PHB)": [],
+              "Necromancy (PHB)": [],
+              "Transmutation (PHB)": [],
+              "Bladesinging (SCAG)": [],
+              "War Magic (XGtE)": []
+            }
+          }
       ]
   }
 
   const generateRace = () => {(dnd_race = dnd_data.races[Math.floor(Math.random() * dnd_data.races.length)])}
 
-  const generateClass = () => {(dnd_class = dnd_data.classes[Math.floor(Math.random() * dnd_data.classes.length)])}
+  const generateClass = () => {
+    const random_class = dnd_data.classes[Math.floor(Math.random() * dnd_data.classes.length)]
+    
+    const sub_classes = Object.keys(random_class.sub_classes)
+    const random_sub_class = sub_classes[Math.floor(Math.random() * sub_classes.length)]
+
+    dnd_class.main_class = random_class.main_class
+    dnd_class.sub_class = random_sub_class
+    if (random_class.sub_classes[random_sub_class].length > 0) {
+      const sub_sub_classes = random_class.sub_classes[random_sub_class]
+      const random_sub_sub_class = sub_sub_classes[Math.floor(Math.random() * sub_sub_classes.length)]
+      dnd_class.sub_sub_class = random_sub_sub_class
+    }
+
+    class_generated = true
+  }
 
   const determineModifier = (total) => {
     if (total === 3) {
@@ -279,7 +349,7 @@
     class="rounded-lg p-2 text-white bg-red-400 hover:bg-red-800">Random Everything</button
   >
 </div>
-<div class="grid grid-cols-2 content-around m-2 gap-x-4">
+<div class="grid grid-cols-2 content-around my-12 gap-x-4">
   <button
     on:click|preventDefault={generateRace}
     class="rounded-lg p-2 text-white bg-purple-400 hover:bg-purple-800">
@@ -294,16 +364,20 @@
     <p class="bg-slate-50 rounded-lg p-2 m-2 text-center">
       {dnd_race}
     </p>
-  {:else}
-    <p class="p-2 m-2" />
   {/if}
 
-  {#if dnd_class}
-    <p class="bg-slate-50 rounded-lg p-2 m-2 text-center">
-      {dnd_class}
+  {#if class_generated}
+    <p class="bg-slate-50 rounded-lg p-2 m-2 text-center col-start-2">
+      {dnd_class.main_class}
     </p>
-  {:else}
-    <p class="p-2 m-2" />
+    <p class="bg-slate-50 rounded-lg p-2 m-2 text-center col-start-2">
+      {dnd_class.sub_class}
+    </p>
+    {#if dnd_class.sub_sub_class !== ''}
+      <p class="bg-slate-50 rounded-lg p-2 m-2 text-center col-start-2">
+        {dnd_class.sub_sub_class}
+      </p>
+    {/if}
   {/if}
 
 </div>
