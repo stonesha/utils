@@ -279,7 +279,7 @@
     class="rounded-lg p-2 text-white bg-red-400 hover:bg-red-800">Random Everything</button
   >
 </div>
-<div class="grid grid-cols-2 content-around m-2 gap-x-40">
+<div class="grid grid-cols-2 content-around m-2 gap-x-4">
   <button
     on:click|preventDefault={generateRace}
     class="rounded-lg p-2 text-white bg-purple-400 hover:bg-purple-800">
