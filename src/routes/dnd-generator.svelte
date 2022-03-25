@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores'
+	import Heading from '../components/Heading.svelte'
 
-	let slug = $page.url.pathname.slice(1)
 	let dnd_race: string = ''
 	let dnd_class = {
 		main_class: '',
@@ -345,7 +344,7 @@
 	}
 </script>
 
-<h1 class="mb-4 font-mono font-bold text-6xl text-center text-slate-200">{slug}</h1>
+<Heading />
 <div class="flex flex-row justify-around">
 	<button
 		on:click|preventDefault={generateEverything}

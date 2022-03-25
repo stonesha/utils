@@ -1,4 +1,5 @@
 <script>
+	import Heading from '../components/Heading.svelte'
 	import Util from '../components/Util.svelte'
 </script>
 
@@ -6,10 +7,7 @@
 	<title>utils by Stone Sha</title>
 </svelte:head>
 
-<h1 class="mb-4 font-mono font-bold text-2xl sm:text-4xl md:text-6xl text-center text-slate-200">
-	utils.stonesha.com
-</h1>
-
+<Heading />
 <div class="flex flex-row justify-center">
 	<div class="flex flex-col md:flex-row">
 		<Util title="JSON Validator and Formatter" slug="json-validator-and-formatter" />

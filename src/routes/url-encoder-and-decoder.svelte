@@ -1,22 +1,20 @@
 <script>
-  import {page} from '$app/stores'
+	import Heading from '../components/Heading.svelte'
 
-  let slug = $page.url.pathname.slice(1)
-  let urlString = '';
+	let urlString = ''
 
-  const encodeUrl = () => {
-    const encodedUri = encodeURI(urlString);
-    urlString = encodedUri;
-  }
+	const encodeUrl = () => {
+		const encodedUri = encodeURI(urlString)
+		urlString = encodedUri
+	}
 
-  const decodeUrl = () => {
-    const decodedUri = decodeURI(urlString);
-    urlString = decodedUri;
-  }
-
+	const decodeUrl = () => {
+		const decodedUri = decodeURI(urlString)
+		urlString = decodedUri
+	}
 </script>
 
-<h1 class="mb-4 font-mono font-bold text-6xl text-center text-slate-200">{slug}</h1>
+<Heading />
 <div class="flex flex-row w-full justify-around my-4">
 	<button
 		on:click|preventDefault={encodeUrl}
@@ -32,5 +30,3 @@
 	bind:value={urlString}
 	placeholder="Put URL here"
 />
-
-
