@@ -357,13 +357,13 @@
 		on:click|preventDefault={generateRace}
 		class="rounded-lg p-2 text-white bg-purple-400 hover:bg-purple-800"
 	>
-		Random Race
+		Randomize Race
 	</button>
 	<button
 		on:click|preventDefault={generateClass}
 		class="rounded-lg p-2 text-white bg-teal-400 hover:bg-teal-800"
 	>
-		Random Class
+		Randomize Class
 	</button>
 	{#if dnd_race}
 		<p class="bg-slate-50 rounded-lg p-2 m-2 text-center">
@@ -391,7 +391,7 @@
 		on:click|preventDefault={generateStats}
 		class="rounded-lg p-2 text-white bg-blue-400 hover:bg-blue-800"
 	>
-		Random Stats
+		Randomize Stats
 	</button>
 	{#if rolled}
 		<div class="flex flex-col md:flex-row justify-around">
