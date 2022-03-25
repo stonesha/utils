@@ -349,7 +349,7 @@
 <div class="flex flex-row justify-around">
 	<button
 		on:click|preventDefault={generateEverything}
-		class="rounded-lg p-2 text-white bg-red-400 hover:bg-red-800">Random Everything</button
+		class="rounded-lg p-2 text-white bg-red-400 hover:bg-red-800">Randomize Everything</button
 	>
 </div>
 <div class="grid grid-cols-2 content-around my-12 gap-x-4">
