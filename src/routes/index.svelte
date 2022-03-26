@@ -13,5 +13,6 @@
 		<Util title="JSON Validator and Formatter" slug="json-validator-and-formatter" />
 		<Util title="URL Encoder and Decoder" slug="url-encoder-and-decoder" />
 		<Util title="DND Class and Stats Generator" slug="dnd-generator" />
+		<Util title="Case Converter" slug="case-converter" />
 	</div>
 </div>
