@@ -14,5 +14,6 @@
 		<Util title="URL Encoder and Decoder" slug="url-encoder-and-decoder" />
 		<Util title="DND Class and Stats Generator" slug="dnd-generator" />
 		<Util title="Case Converter" slug="case-converter" />
+		<Util title="Media Extractor" slug="media-extractor" />
 	</div>
 </div>
