@@ -35,6 +35,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-vercel": "^1.0.0-next.46"
+    "@sveltejs/adapter-vercel": "^1.0.0-next.46",
+    "puppeteer": "^13.5.2"
   }
 }
